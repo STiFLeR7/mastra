@@ -1,5 +1,19 @@
 # @mastra/core
 
+## 1.37.0-alpha.3
+
+### Minor Changes
+
+- Add per-provider capability files and `auto` mode for `observeAttachments` ([#16922](https://github.com/mastra-ai/mastra/pull/16922))
+  - Generate per-provider capability files (e.g. `capabilities/openai.json`) alongside the model router registry, sourced from models.dev API
+  - Export `modelSupportsAttachments(modelRouterId)` from `@mastra/core/llm` to check whether a model supports image/file attachments
+  - Extend `observeAttachments` config to accept `'auto'` in addition to `boolean | string[]`
+  - When set to `'auto'`, the observer resolves the model (including function-based models) and checks the capability registry before deciding to forward or drop attachment parts
+
+### Patch Changes
+
+- UnixSocketPubSub: skip serialization when broker has 0 remote clients, lazily build ServerFrame only when a subscribed client exists, and automatically elect a new broker with resubscription when the active broker disconnects. ([#16939](https://github.com/mastra-ai/mastra/pull/16939))
+
 ## 1.37.0-alpha.2
 
 ### Minor Changes

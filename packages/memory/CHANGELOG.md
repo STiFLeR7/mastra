@@ -1,5 +1,20 @@
 # @mastra/memory
 
+## 1.20.0-alpha.1
+
+### Minor Changes
+
+- Add per-provider capability files and `auto` mode for `observeAttachments` ([#16922](https://github.com/mastra-ai/mastra/pull/16922))
+  - Generate per-provider capability files (e.g. `capabilities/openai.json`) alongside the model router registry, sourced from models.dev API
+  - Export `modelSupportsAttachments(modelRouterId)` from `@mastra/core/llm` to check whether a model supports image/file attachments
+  - Extend `observeAttachments` config to accept `'auto'` in addition to `boolean | string[]`
+  - When set to `'auto'`, the observer resolves the model (including function-based models) and checks the capability registry before deciding to forward or drop attachment parts
+
+### Patch Changes
+
+- Updated dependencies [[`8116436`](https://github.com/mastra-ai/mastra/commit/81164363eb225d774e41ff27da6a5ea611406688), [`c27c4b9`](https://github.com/mastra-ai/mastra/commit/c27c4b9f137df5414fca4e45896aceccff6b0ed5)]:
+  - @mastra/core@1.37.0-alpha.3
+
 ## 1.19.1-alpha.0
 
 ### Patch Changes
